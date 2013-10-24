@@ -26,6 +26,8 @@ class ApiConnection extends Connection
 
     private $_queryTimeout = 0;
 
+    private $server;
+
     public function __construct()
     {
         $this->sphinxClient = new \SphinxClient();
@@ -56,26 +58,35 @@ class ApiConnection extends Connection
             $port = $parameters[1];
         }
 
+        $this->server = array($server, $port);
         $this->sphinxClient->SetServer($server, $port);
+    }
+
+    /**
+     * @return array
+     */
+    public function getServer()
+    {
+        return $this->server;
     }
 
     /**
      * Open Sphinx persistent connection.
      *
-     * @throws ESphinxException if client is already connected.
-     * @throws ESphinxException if client has connection error.
+     * @throws Exception if client is already connected.
+     * @throws Exception if client has connection error.
      * @link http://sphinxsearch.com/docs/current.html#api-func-open
      */
     public function openConnection()
     {
         if ($this->isConnected) {
-            throw new ESphinxException("Sphinx client is already opened");
+            throw new Exception("Sphinx client is already opened");
         }
 
         $this->sphinxClient->Open();
 
         if ($this->sphinxClient->IsConnectError()) {
-            throw new ESphinxException("Sphinx exception: ".$this->sphinxClient->GetLastError());
+            throw new Exception("Sphinx exception: ".$this->sphinxClient->GetLastError());
         }
 
         $this->isConnected = true;
