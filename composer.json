@@ -1,0 +1,24 @@
+{
+    "name": "sergebezborodov/esphinx2",
+    "type": "library",
+    "description": "Sphinx search component for Yii Framework 2",
+    "keywords": ["sphinx","search", "yii2"],
+    "homepage": "https://github.com/sergebezborodov/esphinx2",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Serge Bezborodov",
+            "email": "serge@bezborodov.net",
+            "homepage": "http://bezborodov.net",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "yiisoft/yii2": "dev-master",
+        "yiisoft/yii2-composer": "dev-master"
+    },
+    "autoload": {
+        "psr-0": { "esphinx2\\": "./src" }
+    }
+}
