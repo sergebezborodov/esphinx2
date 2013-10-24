@@ -28,12 +28,12 @@ class ApiConnection extends Connection
 
     private $server;
 
-    public function init()
+    public function __construct($config = array())
     {
-        parent::init();
-
         $this->sphinxClient = new \SphinxClient();
         $this->sphinxClient->SetArrayResult(true);
+
+        parent::__construct($config);
     }
 
     /**
