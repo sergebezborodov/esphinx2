@@ -121,7 +121,7 @@ class Result extends \yii\base\Component implements \Iterator, \ArrayAccess, \Co
 		$this->_index++;
 		if (isset($this->_matches[$this->_index])) {
 			if(!isset($this->_match_objects[$this->_index])) {
-				$this->_match_objects[$this->_index] = new ESphinxMatchResult($this->_matches[$this->_index]);
+				$this->_match_objects[$this->_index] = new MatchResult($this->_matches[$this->_index]);
 			}
 	        $this->_row = $this->_match_objects[$this->_index];
 		} else {
